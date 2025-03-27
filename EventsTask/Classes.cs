@@ -88,8 +88,8 @@ namespace EventsTask
     public abstract class Flower
     {
         public string Name { get; set; }
-        protected int Flowering_period { get; init; }
-        protected int DaysAlive = 0;
+        protected int Flowering_period { get; init; } // Поле для кількості днів цвітіння
+        protected int DaysAlive = 0; // Лічильник днів цвітіння квітки
         protected readonly ConsoleColor color;
         protected bool isOpen = false;
         public event EventHandler Withered;
@@ -122,8 +122,9 @@ namespace EventsTask
         }
 
         public override void OnSunRise(object sender, FlowerEventArgs e)
-        {
-            if (DaysAlive < Flowering_period)
+        { 
+            // Перевірка чи квітка ще не зів'яла
+            if (DaysAlive < Flowering_period) 
             {
                 ++DaysAlive;
                 Console.ForegroundColor = color;
@@ -179,6 +180,7 @@ namespace EventsTask
 
         public override void OnSunRise(object sender, FlowerEventArgs e)
         {
+            // Перевірка чи квітка ще не зів'яла
             if (DaysAlive < Flowering_period)
             {
                 ++DaysAlive;
